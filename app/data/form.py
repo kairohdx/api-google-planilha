@@ -19,12 +19,12 @@ class DataForm(DbData):
         if (form := await self.collection.find_one({"_id":id})) is not None:            
             return FormComplete.parse_obj(form)
         
-        raise HTTPException(status_code=404, detail=f'Usuario de id "{id}" não encontrado')
+        raise HTTPException(status_code=404, detail=f'Formulario de id "{id}" não encontrado')
     
     async def insertForm(self, formData:FormComplete) -> FormComplete:
         form = await self.collection.insert_one(formData.dict())
         if form:
-            return await self.getById(str(form.inserted_id))
+            return await self.collection.find_one({"_id":form.inserted_id})
 
     async def updateForm(self, id:str, formData:FormComplete) -> FormComplete:
         update_result = await self.collection.update_one({"_id": id}, {"$set": formData})

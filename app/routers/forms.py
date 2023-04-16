@@ -23,7 +23,8 @@ async def read_form(idForm: str, Authorize: AuthJWT = Depends(), db: Any = Depen
 
 @router.post('/', response_model=FormComplete)
 async def newForm(user:FormComplete, current_user: UserBase = Depends(protected)):
-    if current_user.email == "kairohdx.faria@gmail.com":
+    scopes = ["admin", "sistem_adm"]
+    if current_user.scope.lower() in scopes:
         dataForm:DataForm = DataForm()
         return await dataForm.insertForm(user)
-    raise HTTPException(status_code=403 ,detail="Este usuario não tem permição para ciar novos usuarios!")
+    raise HTTPException(status_code=403 ,detail="Este usuario não tem permição para ciar novos Formularios!")

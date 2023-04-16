@@ -13,12 +13,12 @@ class Input(BaseModel):
     type: str = 'text'
     options: list[Option] = []
     label: str = 'inputLabel'
+    limit: int | None = None
 
 
 class FormLayoutBase(BaseModel):
     name: str
     description: str | None = None
-    pathRoute: str
 
 class FormComplete(FormLayoutBase):
     inputs: list[Input]
