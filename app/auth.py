@@ -24,10 +24,10 @@ router = APIRouter(
 
 @router.post("/", response_model=AuthResponse)
 async def auth(authBody:AuthBase, Authorize: AuthJWT = Depends()):
-    '''dbObj = DataUser()
+    dbObj = DataUser()
     if (user := await dbObj.getByEmail(authBody.email)) is not None:
         if not pwd_context.verify(authBody.password, user.passHash):
-            raise HTTPException(status_code=401,detail="E-mail ou senha invalido!")  '''
+            raise HTTPException(status_code=401,detail="E-mail ou senha invalido!")
     
     auth = AuthResponse()
     auth.access_token = Authorize.create_access_token(subject=authBody.email, expires_time=auth.expire_in)
