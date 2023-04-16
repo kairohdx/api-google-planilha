@@ -1,5 +1,6 @@
 from typing import Annotated
 from fastapi import Depends, HTTPException, Header
+from app.data.user import DataUser
 from app.models.user import UserBase
 from app.settings import Settings
 from fastapi_jwt_auth import AuthJWT
@@ -10,8 +11,8 @@ def get_settings():
 
 async def current_user(email:str | None = None):
     if email:
-        if email == "usuario.publico@email.com":#'kairohdx.faria@gmail.com'
-            return UserBase(name="Folha", email="kairohdx.faria@gmail.com", scope="Admin")
+        dataUser:DataUser = DataUser()
+        return await dataUser.getByEmail(email)
     return None
 
 

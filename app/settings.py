@@ -37,6 +37,9 @@ class Settings:
         self.dbConn = f"mongodb+srv://{self.dbUser}:{self.dbPass}@clusterpocketsb.yw1fh.mongodb.net/?retryWrites=true&w=majority"
         self.dbViewConn = f"mongodb+srv://<userName>:<password>@clusterpocketsb.yw1fh.mongodb.net/?retryWrites=true&w=majority"
 
+        self.sheet_scopes = os.getenv('SCOPES').split("|") if os.getenv('SCOPES') else []
+        self.sheet_id = os.getenv('SAMPLE_SPREADSHEET_ID')
+
 
     def load_db_conn(self):
         self.dbCli = AsyncIOMotorClient(self.dbConn)

@@ -5,7 +5,7 @@ from pydantic import BaseModel
 from app import auth
 from app.auth import authjwt_exception_handler
 from app.settings import Settings
-from app.routers import forms, user
+from app.routers import forms, sheet, user
 from fastapi_jwt_auth import AuthJWT
 from fastapi_jwt_auth.exceptions import AuthJWTException
 
@@ -41,4 +41,5 @@ app.include_router(auth.router)
 
 app.include_router(user.router)
 app.include_router(forms.router)
+app.include_router(sheet.router)
 
