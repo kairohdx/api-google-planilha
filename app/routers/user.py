@@ -1,28 +1,41 @@
-from fastapi import APIRouter, Depends, HTTPException
+from typing import Annotated
+from fastapi import APIRouter, Depends, HTTPException, Header
 from fastapi_jwt_auth import AuthJWT
-from app.models.user import UserLogin
+from app.data.user import DataUser
+from app.auth import pwd_context
+from app.dependencies import protected
+from app.models.auth import AuthResponse
+from app.models.user import UserBase, UserLogin, UserPost
+
 
 router = APIRouter(
     prefix="/users",
-    tags=["forms"],
-    dependencies=[Depends(get)]
+    tags=["users"]
 )
 
-@router.post('/login')
-def login(user: UserLogin, Authorize: AuthJWT = Depends()):
-    if user.username != "test" or user.password != "test":
-        raise HTTPException(status_code=401,detail="Bad username or password")
 
-    # subject identifier for who this token is for example id or username from database
-    access_token = Authorize.create_access_token(subject=user.username)
-    return {"access_token": access_token}
+@router.post('/login', response_model=AuthResponse)
+def login(user: UserLogin, current_user: UserBase = Depends(protected), Authorize: AuthJWT = Depends()):
+    if user.email != "test2" or user.password != "test2":
+        raise HTTPException(status_code=401, detail="E-mail ou senha invalidos!")
+    
+    auth = AuthResponse()
+    auth.access_token = Authorize.create_access_token(subject=user.email, expires_time=auth.expire_in)
+    auth.refresh_token = Authorize.create_refresh_token(subject=user.email)
+    
+    return auth
 
 
-# protect endpoint with function jwt_required(), which requires
-# a valid access token in the request headers to access.
-@router.get('/user')
-def user(Authorize: AuthJWT = Depends()):
-    Authorize.jwt_required()
+@router.get('/{_id}', response_model=UserBase)
+def getUserById(current_user: UserBase = Depends(protected)):
+    return current_user
 
-    current_user = Authorize.get_jwt_subject()
-    return {"user": current_user}
+
+@router.post('/', response_model=UserBase)
+async def newUser(user:UserPost, current_user: UserBase = Depends(protected)):
+    if current_user.email == "kairohdx.faria@gmail.com":
+        dataUser:DataUser = DataUser()
+
+        user.passHash = pwd_context.hash(user.passHash)
+        return await dataUser.insertUser(user)
+    raise HTTPException(status_code=403 ,detail="Este usuario não tem permição para ciar novos usuarios!")

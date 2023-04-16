@@ -1,12 +1,12 @@
 from pydantic import BaseModel
 
 
-class Option:
+class Option(BaseModel):
     value: str = ''
     text: str = 'option'
 
 
-class Input:
+class Input(BaseModel):
     name: str = 'inputName'
     placeHolder: str = ''
     id: str = 'inputId'
@@ -19,4 +19,6 @@ class FormLayoutBase(BaseModel):
     name: str
     description: str | None = None
     pathRoute: str
+
+class FormComplete(FormLayoutBase):
     inputs: list[Input]
