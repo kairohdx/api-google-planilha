@@ -2,16 +2,8 @@
 
 /venv
 
-<<<<<<< HEAD
-/__pycahe__
+/__pychache__
 
 credentials.json
 
 token.json
-
-Token.json
-=======
-credentials.json
-
-token.json
->>>>>>> 8c8199e (removendo token.json)
