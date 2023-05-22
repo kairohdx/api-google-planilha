@@ -1,7 +1,7 @@
-from pydantic import BaseModel
+# from pydantic import BaseModel
 
 
-class Log(BaseModel):
-    path:str | None = None
-    error:str | None = None
-    statusCode: str | None
+# class Log(BaseModel):
+#     path:str = ''
+#     error:str = ''
+#     statusCode: str | None

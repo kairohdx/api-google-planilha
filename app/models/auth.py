@@ -4,8 +4,8 @@ from pydantic import BaseModel
 
 
 class AuthBase(BaseModel):
-    email:str | None = None
-    password:str | None = None
+    email:str = ''
+    password:str = ''
 
 class AuthResponse(BaseModel):
     access_token:str = "access_token"
@@ -14,7 +14,7 @@ class AuthResponse(BaseModel):
 
 class AuthFlow(BaseModel):
     tokenUrl: str
-    refreshUrl: Optional[str] = None
+    refreshUrl: Optional[str] = ''
     scopes: dict = {}
 
     class Config:

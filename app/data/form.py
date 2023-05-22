@@ -1,5 +1,6 @@
 
 from typing import Any
+from bson import ObjectId
 
 from fastapi import HTTPException
 
@@ -16,11 +17,17 @@ class DataForm(DbData):
         return [FormLayoutBase.parse_obj(u) for u in forms]
     
     async def getById(self, id:str) -> FormComplete:
-        if (form := await self.collection.find_one({"_id":id})) is not None:            
+        if (form := await self.collection.find_one({"_id":ObjectId(id)})) is not None:            
             return FormComplete.parse_obj(form)
         
         raise HTTPException(status_code=404, detail=f'Formulario de id "{id}" não encontrado')
     
+    async def getBySheetAndUser(self, sheetsId, userId) -> FormComplete:
+        if (form := await self.collection.find_one({"sheetsId":sheetsId, "userId":userId})) is not None:            
+            return FormComplete.parse_obj(form)
+        
+        raise HTTPException(status_code=404, detail=f'Formulario de id "{id}" não encontrado')
+
     async def insertForm(self, formData:FormComplete) -> FormComplete:
         form = await self.collection.insert_one(formData.dict())
         if form:

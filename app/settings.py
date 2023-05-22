@@ -12,10 +12,10 @@ class Settings:
     secret_key:str = 'secret_key'
     app_name: str = 'API-IN-FASTAPI'
     admin_email:str = "kairohdx.faria@gmail.com"
-    dbConn:str | None = None
-    dbViewConn:str | None = None
-    dbUser:str | None = None
-    dbPass:str | None = None
+    dbConn:str = ''
+    dbViewConn:str = ''
+    dbUser:str = ''
+    dbPass:str = ''
     dbCli: Any
     db:Any
 
@@ -29,7 +29,8 @@ class Settings:
 
         self.app_name = os.getenv('APP_NAME') if os.getenv('APP_NAME') else 'API-IN-FASTAPI'
         
-        self._cors.append(os.getenv('CORS').split(";"))
+        if os.getenv('CORS'):
+            self._cors.append(os.getenv('CORS').split(";"))
         self.secret_key = os.getenv('SECRET_KEY')
 
         self.dbUser = os.getenv('MONGODB_USER')
@@ -37,8 +38,8 @@ class Settings:
         self.dbConn = f"mongodb+srv://{self.dbUser}:{self.dbPass}@clusterpocketsb.yw1fh.mongodb.net/?retryWrites=true&w=majority"
         self.dbViewConn = f"mongodb+srv://<userName>:<password>@clusterpocketsb.yw1fh.mongodb.net/?retryWrites=true&w=majority"
 
-        self.sheet_scopes = os.getenv('SCOPES').split("|") if os.getenv('SCOPES') else []
-        self.sheet_id = os.getenv('SAMPLE_SPREADSHEET_ID')
+        self.sheet_scopes = os.getenv('SHEET_SCOPES').split("|") if os.getenv('SHEET_SCOPES') else []
+        self.client_file = os.getenv('CLIENT_FILE')
 
 
     def load_db_conn(self):

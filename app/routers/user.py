@@ -32,7 +32,7 @@ async def login(user_post: AuthBase, current_user: UserBase = Depends(protected)
 async def getUserById(_id:str, current_user: UserBase = Depends(protected)):
     if current_user.scope == "admin":
         dataUser:DataUser = DataUser()
-        if (user := dataUser.getById(_id)):
+        if (user := await dataUser.getById(_id)):
             return user
         raise HTTPException(status_code=404, detail="Usuario não encontrado")
     raise HTTPException(status_code=403, detail="Este usuario não tem permição para ciar novos usuarios!")
@@ -40,7 +40,8 @@ async def getUserById(_id:str, current_user: UserBase = Depends(protected)):
 
 @router.post('/', response_model=UserBase)
 async def newUser(user:UserPost, current_user: UserBase = Depends(protected)):
-    if current_user.scope == "admin":
+    print(current_user.dict())
+    if current_user.scope == "public":
         dataUser:DataUser = DataUser()
 
         user.passHash = pwd_context.hash(user.passHash)

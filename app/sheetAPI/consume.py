@@ -1,18 +1,26 @@
 
+import os
 from fastapi import HTTPException
-from app.settings import Settings
-from app.sheetAPI.sheetCreds import SheetCred
+from app.models.user import UserBase
 
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+from google.oauth2 import service_account
+
+from app.settings import Settings
 
 
 class ConsumeAPI:
     def __init__(self) -> None:
-        settings:Settings = Settings()
-        self.spreadsheetId = settings.sheet_id
-        self.sheetCreds = SheetCred(settings.sheet_scopes)
-        self.creds = self.sheetCreds.creds
+        settings = Settings()
+        self.spreadsheetId = ''
+        scopes = ["https://www.googleapis.com/auth/spreadsheets"]
+        secret_file = os.path.join(os.getcwd(), settings.client_file)
+
+        self.creds = service_account.Credentials.from_service_account_file(secret_file, scopes=scopes)
+
+    def setSheetsId(self, spreadsheetId:str):
+        self.spreadsheetId = spreadsheetId
 
     async def apend_row(self, pageName:str, values:list[str] = []) -> bool:
 
@@ -33,6 +41,7 @@ class ConsumeAPI:
             return True
 
         except HttpError as err:
+            print(err)
             if err.status_code == 400:
                 return False
             raise HTTPException(status_code=err.status_code, detail=err.content)

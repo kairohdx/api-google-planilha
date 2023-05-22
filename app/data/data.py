@@ -6,7 +6,7 @@ from app.settings import Settings
 
 class DbData:
     collection: Any
-    db: Any | None = None
+    db: Any = ''
 
     def __init__(self, collectionName):
         settings = Settings()

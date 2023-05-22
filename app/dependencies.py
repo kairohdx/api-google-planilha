@@ -9,7 +9,7 @@ from fastapi_jwt_auth import AuthJWT
 def get_settings():
     return Settings()
 
-async def current_user(email:str | None = None):
+async def current_user(email:str = ''):
     if email:
         dataUser:DataUser = DataUser()
         return await dataUser.getByEmail(email)

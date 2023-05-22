@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "controlesapato-387315",
+  "private_key_id": "9efcd417ed1b06cde64eccace44c8af7e5511988",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCyZFXWckYXPOjZ\narElkbRnyht20WQrILrDei2GZrhWQv7paFJCqEgGqJRYPita0BlNy+Ytf1UEa79e\na+mtl9XRLkuiF1n2LMemk0g761uoYRZgoQPZE62cn10febUdnMdnn5liRNn/bZ1H\nJ4qw1cfp6QS30z7DvinWi6Q/pPwc813rdDisBL7/ffh8Oexpakacx67a4gC966Hs\nfaXJoRPQkdK5Zd0/zUcgylnCiLx9Qp2dAqBe0KQiO0JdkquYUnGXUz/iqRzVcd8t\n8nBeNS4ZHhuaJfK4TrvrmhIu6ixuOELaj7nHA8+AFdpsNXVSX7a/n59Hu3vy/Ky/\nFwlx1hAlAgMBAAECggEAA1omUMbJ8WLYH0nFdWbFBJREKtnpb3QIfmbb1yQz/473\nukwXC6Cc5d8iFnxolSbG6vLTavRzFQevS2dstzHctzcO/cdBjgIuaD9pQpL8IHBe\nmsc7ysb3YrON7Or9D8bj6lsR50pS7F1TcMRZ81O5E3io+YlTKxt2Ls1l8zo28JZM\nGf6FMCpl5syXp6gOlj19Yoihu6e/bZyBr6dqOQfqkKWq2ZaTswP7W/Oq3XhQH2Qn\nNW+leIbHwfiBZGMPy4kMck+GxE2WbMyJybJOLoYT+QycZFvKRkmg+l+IDB2Gwe4N\nG05yaoXzJbbRBHMBPzoCnh81umnpFK13BRuUFzIUKwKBgQDfRG6lxBfP/lR3rghE\nVdjhDu4ZqD9yj5UMtjqiFKUrRmJFI8qkVlgLbF/6BJOwcfNZRYcSdTTB7Hxa0jvB\nSJLNg1mDnVhkwjKayGOejxFLLKRgpUHe93gpPha8/eGz7MrEnxw3d2x6T9TdNQvA\nSH2IkQspNesuFyS2bBH+OW/4JwKBgQDMi6kigpFZmq4jUC09lPSHHwxaabnslhUK\nNo11vQ/y0QX6dWaR3SfTQrOVqE0QQ2EFBlZChXbSkSgeV5Z82CXrg0yO4pqs+jSl\nvPNaa2jMV7jv3hcv54X3L4mwhdTW/pvyJywOoj/9OP4BNr4XG7UagpkQztk+dSSg\nqf7eyBw40wKBgD6i4i/bLZsKjQPubR9OvkOVfrLwAqzPH0+rqBNkm1niqxseiXFF\nT/oUc3Ce7BgqP80htl01SJHHGLQaGu2EwLqrSOelsvDBkpTd9yS6mm1unscGVc6J\nuspHQvXOfA2QNuqmgLIG7QX7c4qDoUJWk/FGT81F9S6/C2uqMfoSfxktAoGBAJ9T\n1m5cOC4Mz8IQDP1gDs1FwRCYNEv2Z/MppSzmFQs2CCsc0cWi+AeWeF6F12looqUQ\nV5a/cVv5178yyLT8hSUbhEH0fzloOCQ1t3ViHyK03ghx/avB81ck/2KyDKVfdEe+\nfZH0jlWH1EtLwewsF/jLa8Fs7km5Y8uGP1J3m4wjAoGBAK2DAPCaX89tHHzIqxR+\ncUGT6YcfzHqHwWQwNHwtixI3MG55qIbNQ1O2mUB4HM3gPpZALzeLTLozgUbsPBeS\n5BWLwLhPmsjwn2qHBHDxrV8/alC/CQj5Clyv2NISOm6HAVpQdfS0uQJ1LbgxxSM1\npJ7Bx62rGptQYv4TxOPWVol0\n-----END PRIVATE KEY-----\n",
+  "client_email": "conta-servico-sapato-500@controlesapato-387315.iam.gserviceaccount.com",
+  "client_id": "100864250052861504235",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/conta-servico-sapato-500%40controlesapato-387315.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -23,7 +23,7 @@ async def read_form(idForm: str, Authorize: AuthJWT = Depends(), db: Any = Depen
 
 @router.post('/', response_model=FormComplete)
 async def newForm(user:FormComplete, current_user: UserBase = Depends(protected)):
-    scopes = ["admin", "sistem_adm"]
+    scopes = ["admin", "private"]
     if current_user.scope.lower() in scopes:
         dataForm:DataForm = DataForm()
         return await dataForm.insertForm(user)
